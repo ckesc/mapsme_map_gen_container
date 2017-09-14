@@ -1,0 +1,25 @@
+From ab73266724ab9dfd7b4ad1d2b2223431f20c9073 Mon Sep 17 00:00:00 2001
+From: CkEsc <iamckesc@gmail.com>
+Date: Thu, 14 Sep 2017 22:28:45 +0000
+Subject: [PATCH] Fix generate_mwm.sh: add new A-star routing
+
+---
+ tools/unix/generate_mwm.sh | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tools/unix/generate_mwm.sh b/tools/unix/generate_mwm.sh
+index 289c00b..c8a1982 100755
+--- a/tools/unix/generate_mwm.sh
++++ b/tools/unix/generate_mwm.sh
+@@ -109,6 +109,8 @@ if [ "$SOURCE_TYPE" == "o5m" ]; then
+   $GENERATOR_TOOL $INTDIR_FLAG --osm_file_type=o5m --osm_file_name="$SOURCE_FILE" --preprocess=true || fail "Preprocessing failed"
+   $GENERATOR_TOOL $INTDIR_FLAG --osm_file_type=o5m --osm_file_name="$SOURCE_FILE" --data_path="$TARGET" --user_resource_path="$DATA_PATH" $GENERATE_EVERYTHING --output="$BASE_NAME"
+   $GENERATOR_TOOL $INTDIR_FLAG --data_path="$TARGET" --user_resource_path="$DATA_PATH" ${CROSS_MWM-} --make_routing_index --generate_traffic_keys --output="$BASE_NAME"
++  $GENERATOR_TOOL --data_path="$TARGET" --intermediate_data_path="$INTDIR/" --user_resource_path="$DATA_PATH/" \
++          --make_cross_mwm --disable_cross_mwm_progress --make_routing_index --generate_traffic_keys --output="$BASE_NAME"
+ else
+   echo "Unsupported source type: $SOURCE_TYPE" >&2
+ fi
+-- 
+2.1.4
+

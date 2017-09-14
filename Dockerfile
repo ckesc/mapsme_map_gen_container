@@ -50,4 +50,13 @@ RUN cd omim && \
     echo | ./configure.sh && \
     cd ../
 RUN CONFIG=gtool omim/tools/unix/build_omim.sh -cro
-CMD ["/bin/bash"]
+
+# Patch gen tool
+ADD fix_mwm_gen.patch fix_mwm_gen.patch
+RUN git am < fix_mwm_gen.patch
+
+RUN mkdir osm_data
+VOLUME osm_data/data.osm.pbf
+
+ENTRYPOINT ["omim/tools/unix/generate_mwm.sh osm_data/data.osm.pbf"] 
+# CMD ["/bin/bash"]
