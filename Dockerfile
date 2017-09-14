@@ -1,11 +1,6 @@
 FROM debian:jessie
 LABEL maintainer="iamckesc@gmail.com"
 
-ENV REPOSITORY_USER=mapsme \
-    REPOSITORY_NAME=omim \
-    REPOSITORY=https://github.com/$REPOSITORY_USER/$REPOSITORY_NAME.git \
-    DIR=/srv
-
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     build-essential \
@@ -39,7 +34,12 @@ RUN apt-get update && \
     libgdal-dev \
     libexpat1-dev \
     libosmpbf-dev
- 
+
+ENV REPOSITORY_USER=mapsme \
+    REPOSITORY_NAME=omim \
+    REPOSITORY=https://github.com/mapsme/omim \
+    DIR=/srv
+   
 WORKDIR $DIR
 
 # Prevent caching git repository
