@@ -1,7 +1,5 @@
-sudo: required
-
-services:
-  - docker
+sudo: true
+dist: trusty
 
 jobs:
   include:
@@ -12,4 +10,3 @@ jobs:
     - stage: push docker image
       script: 
       - docker push $DOCKER_USERNAME/omim-gen-map
-    
