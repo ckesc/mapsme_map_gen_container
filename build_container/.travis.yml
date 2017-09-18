@@ -1,0 +1,15 @@
+sudo: required
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      - docker build -t $DOCKER_USERNAME/omim-gen-map .      
+    - stage: push docker image
+      script: 
+      - docker push $DOCKER_USERNAME/omim-gen-map
+    
