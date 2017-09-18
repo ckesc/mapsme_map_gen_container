@@ -1,12 +1,10 @@
 sudo: true
 dist: trusty
 
-jobs:
-  include:
-    - stage: build docker image
-      script:
-      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-      - docker build -t $DOCKER_USERNAME/omim-gen-map .      
-    - stage: push docker image
-      script: 
-      - docker push $DOCKER_USERNAME/omim-gen-map
+script:
+  - docker build -t $DOCKER_USERNAME/omim-gen-map .      
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push USER/REPO;
+    fi
