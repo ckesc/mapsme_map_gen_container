@@ -51,14 +51,11 @@ RUN cd omim && \
     cd ../
 RUN CONFIG=gtool omim/tools/unix/build_omim.sh -cro
 
-# Patch gen tool
-ADD fix_mwm_gen.patch fix_mwm_gen.patch
-RUN cd omim && \
-    git apply ../fix_mwm_gen.patch && \
-    cd ..
-
 RUN mkdir data
 VOLUME data/
+
+# Specify this for enabling route build
+ENV BORDERS_PATH="../omim/data/borders" 
 
 WORKDIR $DIR/data
 
