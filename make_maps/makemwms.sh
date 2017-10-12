@@ -73,13 +73,13 @@ do
   FILENAME=$(basename "$FILE")
   FILEPBF="${FILENAME%.*}.pbf"
   FILEMWM="${FILENAME%.*}.mwm"
-  tc_begin "Make mwm $FILENAME"
+  tc_begin "Make mwm $FILEMWM"
 
   echo "Make $FILEMWM"
   ../omim/tools/unix/generate_mwm.sh "data/$FILEPBF"
   # docker run --rm -t -v $PWD:/srv/data "lcat/mwm" "data/$FILEPBF"
   tc_publish "/osm_data/data/$FILEMWM"
-  tc_end "Make mwm $FILENAME"
+  tc_end "Make mwm $FILEMWM"
   echo " "
 done
 tc_end 'Make mwm files'

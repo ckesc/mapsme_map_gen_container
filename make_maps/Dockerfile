@@ -1,5 +1,5 @@
-# FROM ckesc/omim-convert2mwm
-FROM ckesc/omim-gen-map
+FROM ckesc/omim-convert2mwm
+# FROM ckesc/omim-gen-map
 LABEL maintainer="iamckesc@gmail.com"
 
 RUN apt-get update && \
