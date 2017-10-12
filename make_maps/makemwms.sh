@@ -78,7 +78,7 @@ do
   echo "Make $FILEMWM"
   ../omim/tools/unix/generate_mwm.sh "data/$FILEPBF"
   # docker run --rm -t -v $PWD:/srv/data "lcat/mwm" "data/$FILEPBF"
-  tc_publish "data/$FILEMWM"
+  tc_publish "/osm_data/data/$FILEMWM"
   tc_end "Make mwm $FILENAME"
   echo " "
 done
