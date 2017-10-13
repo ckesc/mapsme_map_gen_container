@@ -42,10 +42,12 @@ ENV REPOSITORY_USER=mapsme \
    
 WORKDIR $DIR
 
-# Prevent caching git repository
-ADD https://api.github.com/repos/$REPOSITORY_USER/$REPOSITORY_NAME/git/refs/heads/master version.json
+ARG BRANCH=master
 
-RUN git clone --depth=1 --recursive $REPOSITORY
+# Prevent caching git repository
+ADD https://api.github.com/repos/$REPOSITORY_USER/$REPOSITORY_NAME/git/refs/heads/$BRANCH version.json
+
+RUN git clone -b $BRANCH --depth=1 --recursive $REPOSITORY
 RUN cd omim && \
     echo | ./configure.sh && \
     cd ../
