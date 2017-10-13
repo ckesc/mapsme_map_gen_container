@@ -1,4 +1,5 @@
-FROM ckesc/omim-convert2mwm
+ARG BRANCH=master
+FROM ckesc/omim-convert2mwm:$BRANCH
 # FROM ckesc/omim-gen-map
 LABEL maintainer="iamckesc@gmail.com"
 
