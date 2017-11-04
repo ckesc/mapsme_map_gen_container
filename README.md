@@ -11,6 +11,7 @@ You can take built container here https://hub.docker.com/r/ckesc/omim-convert2mw
 
 ### How to use
 0. Download pbf file from somewhere. For example http://gis-lab.info
+0. Rename it like maps.me official map file. For example `Russia_Moscow.osm.pbf`
 1. Place you pbf file in current directory. Absolute path wont work here
 2. Run
 ```bash
@@ -24,7 +25,7 @@ You can palce it into you phone instead of curren map file.
 ### Note: 
 - file name should math current map file. For example `Russia_Moscow` instead of just `Moscow`
 - You should place file into `/sdcard/Mapswithme/17xxxx` whene `17xxxx` is date of current official maps.
-- Routing between 2 maps wont work if your pbf borders doesent math borders in https://github.com/mapsme/omim/tree/master/data/borders
+- Routing between 2 maps wont work if your pbf borders doesn't math borders in https://github.com/mapsme/omim/tree/master/data/borders
 
 ## make_maps
 Container for automative build of maps.me maps.
