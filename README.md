@@ -20,11 +20,11 @@ docker run --rm -u $(id -u):$(id -g) -v $PWD:/srv/data ckesc/omim-convert2mwm:re
 Replace `release-76` with actual branch (tag in docker terminology)  
 Replace `Russia_Moscow.osm.pbf` with your pbf file. File should be in current directory. Absolute path won't work here.  
 
-After ~hour you got ready to use mwm file
+After ~hour you got ready to use mwm file.  
 In current directory will be created temporary files.
 
-You can place it into you phone instead of curren map file.
-## Note: 
+You can place result files into your phone instead of curren map file. [See how](#how-to-upload-mwm-to-device)
+### Note: 
 - Routing between 2 maps won't work if your pbf borders doesn't match borders in https://github.com/mapsme/omim/tree/master/data/borders
 
 # make_maps
