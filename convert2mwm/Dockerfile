@@ -51,7 +51,7 @@ RUN git clone -b $BRANCH --depth=1 --recursive $REPOSITORY
 RUN cd omim && \
     echo | ./configure.sh && \
     cd ../
-RUN CONFIG=gtool omim/tools/unix/build_omim.sh -cro
+RUN CONFIG=gtool omim/tools/unix/build_omim.sh -crs
 
 RUN mkdir data
 VOLUME data/
